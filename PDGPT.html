@@ -232,7 +232,21 @@
             font-size: 1.2rem;
             cursor: pointer;
             margin-left: 2rem;
+                
+            width: 40px;               /* ✅ Prevent shifting */
+            height: 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
         }
+        
+        .theme-toggle i {
+            margin: 0 !important;
+            width: 20px;
+            text-align: center;
+        }
+
 
         /* Main Sections */
         section {
@@ -263,6 +277,10 @@
             height: 4px;
             background: var(--accent);
             border-radius: 2px;
+        }
+
+        #about {
+            scroll-margin-top: 55px; /* Adjust if your nav height changes */
         }
 
         /* About Section */
