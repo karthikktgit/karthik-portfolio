@@ -74,6 +74,8 @@
             align-items: center;
         }
 
+        
+
         header::before {
             content: '';
             position: absolute;
@@ -85,6 +87,7 @@
             opacity: 0.1;
             z-index: 0;
         }
+        
 
         .header-content {
             position: relative;
@@ -345,7 +348,7 @@
         }
 
         .skill-category h3 {
-            color: var(--primary);
+            color: var(--accent);
             margin-bottom: 1.5rem;
             font-size: 1.3rem;
             display: flex;
@@ -456,15 +459,6 @@
 
         .project-card:not(.hidden) {
             animation: fadeInUp 0.3s ease; /* Apply fade-in animation */
-        }
-
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
         }
 
         .project-card:hover {
@@ -759,14 +753,14 @@
         }
 
         .footer-social a {
-            color: white;
+            color: var(--accent); /* Optional: show color always */
             font-size: 1.5rem;
             transition: var(--transition);
         }
 
         .footer-social a:hover {
-            color: var(--accent);
             transform: translateY(-5px);
+            color: var(--secondary); /* Or white */
         }
 
         .copyright {
@@ -858,6 +852,24 @@
 
     <!-- Header/Hero Section -->
     <header>
+        <!--
+        <div class="tradingview-widget-container" style="position:absolute; top:0; left:0; width:100%; height:100%; z-index:0; opacity:0.15; pointer-events: none;">
+            <div id="tradingview-widget" class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async></script>
+            <script type="text/javascript">
+              new TradingView.widget({
+                "symbols": [
+                  ["S&P 500", "INDEX:SPX"]
+                ],
+                "colorTheme": "dark",
+                "autosize": true,
+                "locale": "en",
+                "container_id": "tradingview-widget"
+              });
+            </script>
+          </div>
+        -->  
+                 
         <div class="header-content">
             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Karthik Tulugu" class="profile-img">
             <h1>Hi, I'm Karthik</h1>
@@ -1232,11 +1244,11 @@
                     <a href="#contact">Contact</a>
                 </div>
                 <div class="footer-social">
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-tableau"></i></a>
-                    <a href="#"><i class="fab fa-medium"></i></a>
-                </div>
+                <a href="https://www.linkedin.com/in/tulugu-karthik" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/karthikktgit" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="mailto:karthiktulugu2@gmail.com"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+18608560040"><i class="fas fa-phone-alt"></i></a>
+            </div>
             </div>
         </div>
     </footer>
