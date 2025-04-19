@@ -8,36 +8,35 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4361ee;
-            --primary-light: #4895ef;
-            --secondary: #3f37c9;
-            --dark: #1a1a2e;
-            --darker: #16213e;
-            --light: #f8f9fa;
-            --accent: #f72585;
-            --success: #4cc9f0;
-            --text: #333;
-            --text-light: #6c757d;
-            --card-bg: #ffffff;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
+    --primary: #1e3a8a;
+    --primary-light: #3b82f6;
+    --secondary: #9333ea;
+    --dark: #0f172a;
+    --darker: #0a0f1c;
+    --light: #f1f5f9;
+    --accent: #0ea5e9; /* NEW: Sky Blue */
+    --success: #10b981;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --card-bg: #f8fafc;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
 
-        [data-theme="dark"] {
-            --primary: #0f2b7f;
-            --primary-light: #4361ee;
-            --secondary: #3a0ca3;
-            --dark: #1a1a2e;
-            --darker: #12172b;            /* darker shade for footers/headers */
-            --light: #0f111a;             /* background of body */
-            --accent: #f72585;
-            --success: #38bdf8;
-            --text: #f8f9fa;
-            --text-light: #adb5bd;
-            --card-bg: #1e2235;           /* for cards and form background */
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
-        }
-
+[data-theme="dark"] {
+    --primary: #3b82f6;
+    --primary-light: #60a5fa;
+    --secondary: #7c3aed;
+    --dark: #0f172a;
+    --darker: #0a0f1c;
+    --light: #0f172a;
+    --accent: #0ea5e9; /* NEW: Sky Blue */
+    --success: #10b981;
+    --text: #f1f5f9;
+    --text-light: #94a3b8;
+    --card-bg: #1e293b;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.6);
+}
 
         * {
             margin: 0;
@@ -380,12 +379,73 @@
 
         /* Projects Section */
         .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* smaller width */
+            display: flex;
+            flex-wrap: wrap;
             justify-content: center;
-            gap: 3rem;
+            gap: 2rem;
         }
 
+
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem; /* Increase spacing between buttons */
+            margin-bottom: 2.5rem; /* Add more spacing below the buttons */
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem; /* Increase button size */
+            font-size: 1rem; /* Larger text */
+            font-weight: 600;
+            border: none;
+            border-radius: 25px; /* Rounded buttons */
+            background: var(--primary-light); /* Primary light color */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .filter-btn:hover {
+            background: var(--accent); /* Accent color on hover */
+            transform: translateY(-3px); /* Slight lift on hover */
+        }
+
+        .filter-btn.active {
+            background: var(--primary); /* Highlight active button */
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for emphasis */
+        }
+
+        .project-card {
+            display: block;
+            width: 300px; /* Fixed width */
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            flex-shrink: 0; /* Prevents shrinking */
+        }
+
+
+        .project-card.hidden {
+            display: none; /* Move slightly down when hidden */
+        }
+
+        /* Add fade-in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-card:not(.hidden) {
+            animation: fadeInUp 0.3s ease; /* Apply fade-in animation */
+        }
 
         .project-card {
             background: var(--card-bg);
@@ -584,24 +644,27 @@
         }
 
         .submit-btn {
-            background: var(--primary);
+            background: var(--primary-light); /* Soothing blue */
             color: white;
             border: none;
             padding: 0.8rem 2rem;
-            border-radius: 5px;
+            border-radius: 8px;
             font-family: 'Poppins', sans-serif;
-            font-weight: 500;
+            font-weight: 600;
             cursor: pointer;
-            transition: var(--transition);
+            transition: background 0.3s ease, transform 0.2s ease;
             display: inline-flex;
             align-items: center;
             text-decoration: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle depth */
         }
 
         .submit-btn:hover {
-            background: var(--secondary);
+            background: var(--secondary); /* Vivid violet for contrast */
             transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced hover depth */
         }
+
 
         .submit-btn i {
             margin-left: 8px;
@@ -934,7 +997,7 @@
             </div>            
             <div class="projects-grid">
                 <!-- Project 1 -->
-                <div class="project-card">
+                <div class="project-card" data-category="powerbi">
                     <div class="project-image">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Sales Dashboard">
                         <span class="project-tag">Featured</span>
@@ -956,7 +1019,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="project-card">
+                <div class="project-card" data-category="python">
                     <div class="project-image">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Customer Segmentation">
                         <span class="project-tag">Machine Learning</span>
@@ -978,7 +1041,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="project-card">
+                <div class="project-card" data-category="ai">
                     <div class="project-image">
                         <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" alt="Supply Chain">
                         <span class="project-tag">Optimization</span>
@@ -1152,9 +1215,30 @@
             alert('Thank you for your message! I will get back to you soon.');
             this.reset();
         });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove 'active' class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add 'active' class to the clicked button
+                    button.classList.add('active');
+
+                    const category = button.getAttribute('data-category');
+
+                    projectCards.forEach(card => {
+                        if (category === 'all' || card.getAttribute('data-category') === category) {
+                            card.classList.remove('hidden'); // Show matching cards
+                        } else {
+                            card.classList.add('hidden'); // Hide non-matching cards
+                        }
+                    });
+                });
+            });
+        });
     </script>
-    
-    
-    
 </body>
 </html>
