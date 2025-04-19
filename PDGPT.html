@@ -8,23 +8,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-    --primary: #1e3a8a;
-    --primary-light: #3b82f6;
-    --secondary: #9333ea;
+    --primary: #1e3a8a;                    /* Deep blue */
+    --primary-light: #60a5fa;              /* Soft blue */
+    --secondary: #9333ea;                 /* Vibrant violet */
     --dark: #0f172a;
     --darker: #0a0f1c;
-    --light: #f1f5f9;
-    --accent: #0ea5e9; /* NEW: Sky Blue */
+
+    --light: #eef2f5;                     /* 🔁 Changed from bright white */
+    --accent: #0ea5e9;                    /* Sky Blue */
     --success: #10b981;
-    --text: #1e293b;
-    --text-light: #64748b;
-    --card-bg: #f8fafc;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    --text: #2e3a59;                      /* Dark slate for readability */
+    --text-light: #6b7280;                /* Muted gray for secondary text */
+
+    --card-bg: #f7f9fc;                   /* Light grayish-blue for cards */
+    --shadow: 0 4px 10px rgba(0, 0, 0, 0.06); /* Softer shadow */
     --transition: all 0.3s ease;
 }
 
 [data-theme="dark"] {
-    --primary: #3b82f6;
+    --primary: #0f3879;
     --primary-light: #60a5fa;
     --secondary: #7c3aed;
     --dark: #0f172a;
@@ -136,20 +139,21 @@
         .social-links a {
             color: white;
             font-size: 1.5rem;
-            transition: var(--transition);
             width: 50px;
             height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(5px);
+            background: var(--primary-light); /* Solid blue background */
+            transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
 
-        .social-lixnks a:hover {
-            background: var(--accent);
-            transform: translateY(-5px);
+        .social-links a:hover {
+            background: var(--secondary); /* Vivid violet on hover */
+            transform: translateY(-4px);
+            color: white;
         }
 
         .scroll-down {
@@ -229,7 +233,7 @@
 
         /* Main Sections */
         section {
-            padding: 6rem 0;
+            padding: 3rem 0;
         }
 
         .section-title {
@@ -269,7 +273,7 @@
         .about-text h3 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .about-text p {
@@ -417,15 +421,22 @@
         }
 
         .project-card {
-            display: block;
-            width: 300px; /* Fixed width */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 400px;             /* Fixed width */
+            height: 500px;            /* 🔷 Balanced height for squarish shape */
             visibility: visible;
             opacity: 1;
             transform: translateY(0);
             transition: opacity 0.3s ease, transform 0.3s ease;
-            flex-shrink: 0; /* Prevents shrinking */
+            flex-shrink: 0;
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
         }
-
 
         .project-card.hidden {
             display: none; /* Move slightly down when hidden */
@@ -462,7 +473,7 @@
         }
 
         .project-image {
-            height: 200px;
+            height: 140px;
             overflow: hidden;
             position: relative;
         }
@@ -497,7 +508,7 @@
         .project-content h3 {
             font-size: 1.3rem;
             margin-bottom: 0.5rem;
-            color: var(--primary);
+            color: var(--accent); /* use accent color for title */
         }
 
         .project-content p {
@@ -513,13 +524,14 @@
         }
 
         .tech-item {
-            background: rgba(67, 97, 238, 0.1);
-            color: var(--primary);
+            background: rgba(14, 165, 233, 0.1); /* soft blue background */
+            color: var(--accent);                /* accent text color */
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 500;
         }
+
 
         .project-links {
             display: flex;
@@ -537,24 +549,43 @@
             transition: var(--transition);
         }
 
+        .project-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
         .project-links a:first-child {
-            background: var(--primary);
-            color: white;
-        }
+    background: var(--accent); /* match accent */
+    color: white;
+    border: none;
+}
 
-        .project-links a:first-child:hover {
-            background: var(--secondary);
-        }
+.project-links a:first-child:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
 
-        .project-links a:last-child {
-            border: 1px solid var(--primary);
-            color: var(--primary);
-        }
+.project-links a:last-child {
+    background: transparent;
+    border: 2px solid var(--accent); /* match accent */
+    color: var(--accent);            /* match accent */
+}
 
-        .project-links a:last-child:hover {
-            background: var(--primary);
-            color: white;
-        }
+.project-links a:last-child:hover {
+    background: var(--accent);
+    color: white;
+    transform: translateY(-2px);
+}
+
 
         /* Contact Section */
         .contact-container {
@@ -573,7 +604,7 @@
         .contact-info h3 {
             font-size: 1.5rem;
             margin-bottom: 1.5rem;
-            color: var(--primary);
+            color: var(--accent);
         }
 
         .contact-item {
@@ -592,6 +623,7 @@
         .contact-text h4 {
             font-size: 1.1rem;
             margin-bottom: 0.3rem;
+            color: var(--accent); /* for small headers like phone/email/etc */
         }
 
         .contact-text p, .contact-text a {
@@ -624,7 +656,7 @@
         .form-control {
             width: 100%;
             padding: 0.8rem 1rem;
-            border: 1px solid #ddd;
+            border: 1px solid #17328b;
             border-radius: 5px;
             font-family: 'Poppins', sans-serif;
             transition: var(--transition);
@@ -647,7 +679,7 @@
             background: var(--primary-light); /* Soothing blue */
             color: white;
             border: none;
-            padding: 0.8rem 2rem;
+            padding: 0.5rem 1.5rem; /* 🔽 Reduced vertical padding */
             border-radius: 8px;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
@@ -657,6 +689,13 @@
             align-items: center;
             text-decoration: none;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle depth */
+            font-size: 0.9rem;
+            white-space: nowrap;         /* 👈 Prevents text like "Live Demo" from breaking */
+            gap: 0.5rem;                 /* 👈 Adds space between icon and text */
+        }
+
+        .submit-btn i {
+            margin: 0; /* Removes unnecessary space on icons */
         }
 
         .submit-btn:hover {
@@ -664,6 +703,8 @@
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Enhanced hover depth */
         }
+
+
 
 
         .submit-btn i {
@@ -788,8 +829,13 @@
             }
 
             .section-title h2 {
-                font-size: 2rem;
-            }
+    font-size: 2.5rem;
+    font-weight: 700;
+    display: inline-block;
+    position: relative;
+    color: var(--accent); /* changed from var(--primary) */
+}
+
         }
     </style>
 </head>
@@ -817,7 +863,12 @@
             <h1>Hi, I'm Karthik</h1>
                 <p class="tagline">Business Analyst | Data & Tech Enthusiast</p>
                 <p>I transform complex business challenges into data-driven solutions and build smart, scalable applications. Currently open to full-time opportunities.</p>
-
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/tulugu-karthik" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/karthikktgit" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="mailto:karthiktulugu2@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="tel:+18608560040"><i class="fas fa-phone-alt"></i></a>
+                </div>              
                 <div style="margin-top: 2rem;"> <!-- Adjust this value as needed -->
                     <a href="#projects" class="submit-btn" style="margin-right: 1rem; text-decoration: none;">
                         <i class="fas fa-briefcase" style="margin-right: 0.5rem;"></i> View Projects
@@ -831,6 +882,7 @@
             </a>
         </div>
     </header>
+
 
     <!-- About Section -->
     <section id="about" class="about-section">
@@ -996,6 +1048,34 @@
                 <button class="filter-btn" data-category="ai">AI/ML</button>
             </div>            
             <div class="projects-grid">
+                <!--FoodScanner Project-->
+                <div class="project-card" data-category="fullstack ai">
+                    <div class="project-image">
+                    <img src="/foodapp.jpg" alt="Food Scanner App">
+                        <span class="project-tag">Full Stack</span>
+                    </div>
+                    <div class="project-content">
+                        <h3>FoodGuard – AI Food Label Scanner</h3>
+                        <p>Web app that scans and analyzes food package ingredients using OCR and AI to detect harmful additives, allergens, and banned substances with user history and Firebase integration.</p>
+                        <div class="project-tech">
+                            <span class="tech-item">HTML</span>
+                            <span class="tech-item">CSS</span>
+                            <span class="tech-item">JavaScript</span>
+                            <span class="tech-item">Firebase</span>
+                            <span class="tech-item">Tesseract.js</span>
+                            <span class="tech-item">AI/ML</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://food-guard-web-app.web.app" class="submit-btn" style="margin-right: 1rem; text-decoration: none;" target="_blank">
+                                <i class="fas fa-external-link-alt" style="margin-right: 0.5rem;"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/karthikktgit/Food-Label-Scanner-Web-App" class="submit-btn" style="text-decoration: none;" target="_blank">
+                                <i class="fab fa-github" style="margin-right: 0.5rem;"></i> Code
+                            </a>
+                        </div>                                               
+                    </div>
+                </div>
+                
                 <!-- Project 1 -->
                 <div class="project-card" data-category="powerbi">
                     <div class="project-image">
@@ -1080,7 +1160,7 @@
                         </div>
                         <div class="contact-text">
                             <h4>Location</h4>
-                            <p>San Francisco, CA</p>
+                            <p>New Haven, CT</p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1089,7 +1169,7 @@
                         </div>
                         <div class="contact-text">
                             <h4>Email</h4>
-                            <a href="mailto:alex.chen@example.com">alex.chen@example.com</a>
+                            <a href="mailto:karthiktulugu2@gmail.com">karthiktulugu2@gmail.com</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1098,7 +1178,7 @@
                         </div>
                         <div class="contact-text">
                             <h4>Phone</h4>
-                            <a href="tel:+14155550123">+1 (415) 555-0123</a>
+                            <a href="tel:+18608560040">+1 (860) 856-0040</a>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -1107,10 +1187,11 @@
                         </div>
                         <div class="contact-text">
                             <h4>Availability</h4>
-                            <p>Monday - Friday, 9am - 5pm PST</p>
+                            <p>Available for full-time roles or project collaboration</p>
                         </div>
                     </div>
                 </div>
+                <!-- Keep your contact form here -->
                 <div class="contact-form">
                     <form id="contactForm">
                         <div class="form-group">
@@ -1134,10 +1215,11 @@
                         </button>
                     </form>
                 </div>
+                
             </div>
         </div>
     </section>
-
+    
     <!-- Footer -->
     <footer>
         <div class="container">
