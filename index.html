@@ -1299,34 +1299,30 @@
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
     
-
+        const isLocalhost = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzmhU5HdWIEqgkxZcSs8A2IlWqCKJcM-q0f_cAWsOoM4MRMTvb1Bluc8BBsaMSfj4mx/exec';
         const form = document.getElementById('contactForm');
 
         form.addEventListener('submit', e => {
-            e.preventDefault();
+    e.preventDefault();
 
-            const data = {
-                name: form.name.value,
-                email: form.email.value,
-                subject: form.subject.value,
-                message: form.message.value
-            };
+    const formData = new FormData(form);
 
-            fetch(scriptURL, {
-                method: 'POST',
-                body: new URLSearchParams(data),
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            })
-            .then(response => {
-                alert('✅ Message sent!');
-                form.reset();
-            })
-            .catch(error => {
-                alert('❌ Failed to send. Try again.');
-                console.error('Error!', error.message);
-            });
-        });
+    fetch(scriptURL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: formData
+    })
+    .then(() => {
+        alert('✅ Message sent!');
+        form.reset();
+    })
+    .catch(error => {
+        alert('❌ Failed to send. Try again.');
+        console.error('Error!', error.message);
+    });
+});
+
 
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('.filter-btn');
