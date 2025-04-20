@@ -1340,28 +1340,51 @@
         });
     </script>
     <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbzmhU5HdWIEqgkxZcSs8A2IlWqCKJcM-q0f_cAWsOoM4MRMTvb1Bluc8BBsaMSfj4mx/exec'; // Replace with your script URL
-  const form = document.getElementById('contactForm');
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const form = e.target;
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const originalText = submitBtn.innerHTML;
+  
+  // Show loading state
+  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+  submitBtn.disabled = true;
 
-  form.addEventListener('submit', e => {
-    e.preventDefault();
+  // Get form data
+  const formData = new FormData(form);
+  const urlEncodedData = new URLSearchParams(formData).toString();
 
-    const formData = new FormData(form);
-
-    fetch(scriptURL, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: formData
-    })
-    .then(() => {
-      alert('✅ Message sent!');
+  fetch('https://script.google.com/macros/s/AKfycbzmhU5HdWIEqgkxZcSs8A2IlWqCKJcM-q0f_cAWsOoM4MRMTvb1Bluc8BBsaMSfj4mx/exec', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: urlEncodedData
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
+  })
+  .then(data => {
+    if (data.status === "success") {
+      alert('Message sent successfully!');
       form.reset();
-    })
-    .catch(error => {
-      alert('❌ Failed to send. Try again.');
-      console.error('Error!', error.message);
-    });
+    } else {
+      throw new Error(data.message || 'Unknown error occurred');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Error sending message: ' + error.message);
+  })
+  .finally(() => {
+    submitBtn.innerHTML = originalText;
+    submitBtn.disabled = false;
   });
+});
 </script>
     </script>    
 </body>
