@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head> 
+    <!-- Notyf Toast Library -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+<script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css">
     <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
     <base href="https://karthikktgit.github.io/karthik-portfolio/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karthik Tulugu| Data-Driven Business Analyst</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="fav64.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -1376,6 +1379,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 
   // Get form data
   const formData = new FormData(form);
+  formData.append('timestamp', new Date().toLocaleString()); // Add timestamp
+
   const urlEncodedData = new URLSearchParams(formData).toString();
 
   fetch('https://script.google.com/macros/s/AKfycby-h3ZmsZEtFXfB4gQZsyUEGAkRrFLkpapyJV9UqzXg_RB2kdB_xmjG6xV6vxRxiRSN/exec', {
@@ -1409,6 +1414,5 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   });
 });
 </script>
-    </script>    
 </body>
 </html>
