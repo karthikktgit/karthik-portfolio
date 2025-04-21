@@ -929,7 +929,7 @@
 /* Timeline Items */
 .timeline-item {
   position: relative;
-  margin: 40px 0;
+  margin: 10px 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -995,15 +995,15 @@
 }
 
 .timeline-item .timeline-content {
-  width: 45%;
+  width: 44%;
 }
 
 .timeline-item:nth-child(odd) .timeline-content {
-  margin-left: 30px;
+  margin-left: 1px;
 }
 
 .timeline-item:nth-child(even) .timeline-content {
-  margin-right: 30px;
+  margin-right: 1px;
 }
 
 
@@ -1749,7 +1749,8 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
       function animation(currentTime) {
         if (startTime === null) startTime = currentTime;
         const timeElapsed = currentTime - startTime;
-        const run = ease(timeElapsed, startPosition, distance, duration);
+        const offset = 60; // adjust this value as needed (e.g., height of your navbar)
+const run = ease(timeElapsed, startPosition, distance - offset, duration);
         window.scrollTo(0, run);
         if (timeElapsed < duration) requestAnimationFrame(animation);
       }
@@ -1770,10 +1771,28 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
       customScrollTo('#projects', 500); // 1000ms for smoother scroll
     });
     
-    document.getElementById('scrollDownArrow').addEventListener('click', function(e) {
+    document.addEventListener("DOMContentLoaded", () => {
+  const linksWithScroll = ['#about', '#skills', '#projects', '#contact'];
+
+  linksWithScroll.forEach(link => {
+    const anchor = document.querySelector(`a[href="${link}"]`);
+    if (anchor) {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        customScrollTo(link, 500);
+      });
+    }
+  });
+
+  const scrollDownArrow = document.getElementById('scrollDownArrow');
+  if (scrollDownArrow) {
+    scrollDownArrow.addEventListener('click', function (e) {
       e.preventDefault();
       customScrollTo('#about', 500);
     });
+  }
+});
+
     </script>
       
 </body>
