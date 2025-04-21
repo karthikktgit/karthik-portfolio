@@ -6,11 +6,17 @@
 <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf/notyf.min.css">
     <script src="https://cdn.jsdelivr.net/npm/notyf/notyf.min.js"></script>
-    <base href="https://karthikktgit.github.io/karthik-portfolio/">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Karthik Tulugu| Data-Driven Business Analyst</title>
     <link rel="icon" type="image/png" href="fav64.png?v=5">
+    <script>
+        if (window.location.hostname.includes("github.io")) {
+          const base = document.createElement('base');
+          base.href = "https://karthikktgit.github.io/karthik-portfolio/";
+          document.head.appendChild(base);
+        }
+    </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -168,12 +174,12 @@
 
         .scroll-down {
             position: absolute; /* <- changed from fixed */
-            bottom: -230px;        /* adjust this to move further down */
+            bottom: -180px;        /* adjust this to move further down */
             left: 50%;
             transform: translateX(-50%);
             color: white;
             font-size: 2.8rem;
-            animation: bounce 1.3s infinite;
+            animation: floatUpDown 1.2s ease-in-out infinite;
             cursor: pointer;
             z-index: 1;
 }
@@ -788,6 +794,19 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        @keyframes floatUpDown {
+  0% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -15px);
+  }
+  100% {
+    transform: translate(-50%, 0);
+  }
+}
+
+
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
             40% { transform: translateY(-10px) translateX(-50%); }
@@ -825,6 +844,10 @@
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+            .timeline-item .timeline-content {
+    margin: 0 auto !important;
+    width: 90% !important;
+  }
         }
 
         @media (max-width: 576px) {
@@ -842,10 +865,208 @@
     display: inline-block;
     position: relative;
     color: var(--accent); /* changed from var(--primary) */
+    html {
+  scroll-behavior: smooth;
 }
 
+}
         }
+
+
+
+
+.timeline-line-top {
+  display: none; /* Not being used currently */
+}
+
+
+.timeline-container {
+  position: relative; /* REQUIRED for pseudo-elements to position properly */
+}
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 4px;
+  height: calc(100% - 120px);
+  background: linear-gradient(to bottom, #667eea, #764ba2);
+  z-index: 1;
+}
+
+.timeline-container::after {
+  content: '';
+  position: absolute;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 15px solid #667eea;
+  z-index: 2;
+}
+
+.bottom-dot {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #764ba2;
+  z-index: 2;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Timeline Items */
+.timeline-item {
+  position: relative;
+  margin: 40px 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.timeline-content {
+  width: 45%;
+  background: var(--card-bg); /* 🔁 Good - uses theme */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid white;
+  box-shadow: 0 0 0 4px #667eea;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.timeline-dot img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+/* Offset the content box away from the central line */
+.timeline-item:nth-child(odd) .timeline-wrapper {
+  flex-direction: row-reverse;
+}
+
+.timeline-item .timeline-content {
+  width: 45%;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-left: 30px;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-right: 30px;
+}
+
+
+.timeline-wrapper:hover .timeline-dot {
+  transform: translate(-50%, -60%) scale(1.15);
+  border: 3px solid #1434d2;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.timeline-wrapper:hover .timeline-dot img {
+  transform: scale(1.1); /* Make inner image pop slightly more */
+}
+
+.timeline-wrapper:hover .timeline-content {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  background: rgba(147, 51, 234, 0.04); /* subtle violet glow */
+}
+
+
+.timeline-date {
+  font-weight: 600;
+  color: #764ba2;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.timeline-content h2 {
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  color: var(--accent); /* Highlighted headings */
+}
+
+.timeline-content p {
+  font-size: 0.95rem;
+  color: var(--text-light); /* Smooth muted text */
+  line-height: 1.6;
+}
+
+.timeline-date {
+  font-weight: 600;
+  color: var(--primary-light); /* Date with soft blue */
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .timeline-item {
+    flex-direction: column;
+  }
+
+  .timeline-dot {
+    width: 60px;
+    height: 60px;
+  }
+}
+
     </style>
+    
 </head>
 <body>
     <!-- Navigation -->
@@ -897,15 +1118,15 @@
                     <a href="tel:+18608560040"><i class="fas fa-phone-alt"></i></a>
                 </div>              
                 <div style="margin-top: 2rem;"> <!-- Adjust this value as needed -->
-                    <a href="#projects" class="submit-btn" style="margin-right: 1rem; text-decoration: none;">
+                    <a href="#projects" id="scrollToProjects" class="submit-btn" style="margin-right: 1rem; text-decoration: none;">
                         <i class="fas fa-briefcase" style="margin-right: 0.5rem;"></i> View Projects
                     </a>
                     <a href="resume.pdf" class="submit-btn" download>
                         <i class="fas fa-file-download" style="margin-right: 0.5rem; text-decoration: none;"></i> Download Resume
                     </a>
                 </div>                               
-            <a href="#about" class="scroll-down">
-                <i class="fas fa-chevron-down"></i>
+                <a href="#about" id="scrollDownArrow" class="scroll-down">
+                    <i class="fas fa-chevron-down"></i>
             </a>
         </div>
     </header>
@@ -1172,6 +1393,81 @@
         </div>
     </section>
     
+    <!-- Timeline Section -->
+<section id="timeline" class="timeline-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Where I’ve Been</h2>
+      </div>
+      <div class="timeline-container">
+        <!-- Top Arrow -->
+        <div class="timeline-line-top"></div>
+  
+        <!-- Timeline Item 1 -->
+        <div class="timeline-item">
+          <div class="timeline-wrapper">
+            <div class="timeline-dot">
+                <img src="unh.png" alt="MS" />
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date"><i class="fas fa-graduation-cap"></i> Expected May 2025</div>
+              <h2>M.S. in Business Analytics</h2>
+              <p>University of New Haven, CT | GPA: 3.4/4.0<br>
+                Sustainability-focused coursework in Supply Chain and Trade Analysis.<br>
+                Key Courses: Supply Chain Analytics, BI, Predictive Analytics, Data Mining, Finance.</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Timeline Item 2 -->
+        <div class="timeline-item">
+          <div class="timeline-wrapper">
+            <div class="timeline-dot">
+              <img src="innroad.png" alt="InnRoad" />
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date"><i class="fas fa-briefcase"></i> Apr 2022 – May 2023</div>
+              <h2>Quality Assurance – InnRoad</h2>
+              <p>Collaborated on reporting modules, improved KPI visibility, supported legacy system enhancements, and built dashboard test frameworks.</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Timeline Item 3 -->
+        <div class="timeline-item">
+          <div class="timeline-wrapper">
+            <div class="timeline-dot">
+              <img src="e_trio.png" alt="Internship" />
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date"><i class="fas fa-tools"></i> Jun 2019 – Aug 2019</div>
+              <h2>Data Analysis Intern – Etrio</h2>
+              <p>Analyzed electric vehicle performance, created dashboards in Excel and Power BI, and delivered data-driven insights to improve efficiency.</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Timeline Item 4 -->
+        <div class="timeline-item">
+          <div class="timeline-wrapper">
+            <div class="timeline-dot">
+              <img src="vnrvjiet.png" alt="BTech" />
+            </div>
+            <div class="timeline-content">
+              <div class="timeline-date"><i class="fas fa-university"></i> 2018 – 2022</div>
+              <h2>B.Tech in Automobile Engineering</h2>
+              <p>VNR VJIET, Hyderabad | CGPA: 7.25/10<br>
+                President of SAE India Student Chapter, led multiple technical initiatives and workshops.</p>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Bottom Dot -->
+        <div class="bottom-dot"></div>
+      </div>
+    </div>
+  </section>
+      
 
     <!-- Contact Section -->
     <section id="contact" class="contact-section">
@@ -1200,6 +1496,16 @@
                             <a href="mailto:karthiktulugu2@gmail.com">karthiktulugu2@gmail.com</a>
                         </div>
                     </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="contact-text">
+                            <h4>LinkedIn</h4>
+                            <a href="https://www.linkedin.com/in/tulugu-karthik" target="_blank">linkedin.com/in/tulugu-karthik</a>
+                        </div>
+                    </div>
+                    
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fas fa-phone"></i>
@@ -1252,49 +1558,6 @@
         </div>
     </section>
     
-    <!-- Timeline Section -->
-<section id="timeline" class="timeline-section" style="padding: 4rem 0; background: var(--light);">
-    <div class="container">
-      <div class="section-title">
-        <h2>Journey So Far</h2>
-      </div>
-  
-      <div class="timeline-container">
-        <!-- Timeline Items -->
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>Quality Assurance Tester</h3>
-            <span class="timeline-date">Apr 2022 – May 2023</span>
-            <p>Worked at InnRoad Software, Hyderabad – managed QA testing, collaborated with developers, and enhanced customer satisfaction through robust testing strategies.</p>
-          </div>
-        </div>
-  
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>Master's in Business Analytics</h3>
-            <span class="timeline-date">2023 – 2025</span>
-            <p>Specializing in data analysis, visualization, supply chain analytics, and machine learning. Built industry-grade dashboards and deployed AI models for predictive insights.</p>
-          </div>
-        </div>
-  
-        <div class="timeline-item left">
-          <div class="timeline-content">
-            <h3>Key Skills Gained</h3>
-            <span class="timeline-date">Ongoing</span>
-            <p>SQL, Python (Pandas, NumPy), R, Excel, Power BI, Tableau, Firebase, Git, Machine Learning (Keras, Scikit-learn), and Business Intelligence Tools.</p>
-          </div>
-        </div>
-  
-        <div class="timeline-item right">
-          <div class="timeline-content">
-            <h3>Freelance Projects & Portfolio</h3>
-            <span class="timeline-date">2024 – Present</span>
-            <p>Created apps like FoodGuard AI, Smart Alarm Prediction, and dynamic dashboards to solve real-world problems using OCR, ML, and Firebase-backed services.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1459,5 +1722,45 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   });
 });
 </script>
+<script>
+    function customScrollTo(targetId, duration = 800) {
+      const target = document.querySelector(targetId);
+      if (!target) return;
+    
+      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      let startTime = null;
+    
+      function animation(currentTime) {
+        if (startTime === null) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const run = ease(timeElapsed, startPosition, distance, duration);
+        window.scrollTo(0, run);
+        if (timeElapsed < duration) requestAnimationFrame(animation);
+      }
+    
+      function ease(t, b, c, d) {
+        // easeInOutQuad
+        t /= d / 2;
+        if (t < 1) return c / 2 * t * t + b;
+        t--;
+        return -c / 2 * (t * (t - 2) - 1) + b;
+      }
+    
+      requestAnimationFrame(animation);
+    }
+    
+    document.getElementById('scrollToProjects').addEventListener('click', function(e) {
+      e.preventDefault();
+      customScrollTo('#projects', 500); // 1000ms for smoother scroll
+    });
+    
+    document.getElementById('scrollDownArrow').addEventListener('click', function(e) {
+      e.preventDefault();
+      customScrollTo('#about', 500);
+    });
+    </script>
+      
 </body>
 </html>
