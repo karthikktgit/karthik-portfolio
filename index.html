@@ -1141,6 +1141,9 @@
   color: white;
   cursor: pointer;
 }
+.mobile-menu-toggle {
+  cursor: pointer;
+}
 
 @media (max-width: 768px) {
   .mobile-menu-toggle {
@@ -1315,9 +1318,9 @@
                     <a href="#projects" id="scrollToProjects" class="submit-btn" style="margin-right: 1rem; text-decoration: none;">
                         <i class="fas fa-briefcase" style="margin-right: 0.5rem;"></i> View Projects
                     </a>
-                    <a href="resume.pdf" class="submit-btn" download>
-                        <i class="fas fa-file-download" style="margin-right: 0.5rem; text-decoration: none;"></i> Download Resume
-                    </a>
+                    <a href="Karthik_Tulugu_Resume.pdf" download="Karthik_Tulugu_Resume.pdf" class="submit-btn" id="resumeDownloadBtn">
+                        <i class="fas fa-file-download" style="margin-right: 0.5rem;"></i> Download Resume
+                      </a>                    
                 </div>                               
                 <a href="#about" id="scrollDownArrow" class="scroll-down">
                     <i class="fas fa-chevron-down"></i>
@@ -1994,8 +1997,17 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+
 </script>
      
-          
+<script>
+    document.getElementById('scrollDownArrow')?.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+ 
+
 </body>
 </html>
