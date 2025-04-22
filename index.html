@@ -73,6 +73,7 @@
             max-width: 1700px;
             margin: 0 auto;
             padding: 0 40px;
+            overflow-x: hidden;
         }
 
         /* Header Styles */
@@ -206,6 +207,8 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .logo {
@@ -221,7 +224,9 @@
 
         .nav-links {
             display: flex;
+            justify-content: flex-end;
             gap: 2rem;
+            flex-wrap: wrap;
         }
 
         .nav-links a {
@@ -233,21 +238,24 @@
             transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
         }
 
+        .nav-links a:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+            transform: translateY(-2px); /* Slight lift effect */
+            color: var(--accent); /* Optional: Change text color on hover */
+        }
 
         .nav-links a:hover::after {
             width: 100%;
         }
 
         .theme-toggle {
-            margin-top: 4px; /* You can tweak this value (e.g. 8px, 12px) */
+            margin-top: 0; /* Remove unnecessary top margin */
             background: none;
             border: none;
             color: white;
-            font-size: 1.2rem;
+            font-size: 1.5rem; /* Adjust size for better visibility */
             cursor: pointer;
-            margin-left: 2rem;
-            width: 40px;               /* ✅ Prevent shifting */
-            height: 10%;
+            margin-left: auto; /* Push it to the far right */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -258,6 +266,16 @@
             margin: 0 !important;
             width: 20px;
             text-align: center;
+        }
+
+        .mobile-menu-toggle {
+            display: none; /* Hide by default */
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            z-index: 1001;
         }
 
 
@@ -837,14 +855,10 @@
                 font-size: 1.2rem;
             }
 
-            .nav-links {
-                display: none;
-            }
-
             .projects-grid {
                 grid-template-columns: 1fr;
             }
-            .timeline-item .timeline-content {
+            .timeline-content {
     margin: 0 auto !important;
     width: 90% !important;
   }
@@ -886,11 +900,11 @@
 .timeline-container::before {
   content: '';
   position: absolute;
-  top: 120px;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%);
   width: 4px;
-  height: calc(100% - 120px);
+  height: calc(100% - 0px);
   background: linear-gradient(to bottom, #667eea, #764ba2);
   z-index: 1;
 }
@@ -898,7 +912,7 @@
 .timeline-container::after {
   content: '';
   position: absolute;
-  top: 120px;
+  top: 0px;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
   width: 0;
@@ -972,11 +986,11 @@
 }
 
 .timeline-dot img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -1008,13 +1022,12 @@
 
 
 .timeline-wrapper:hover .timeline-dot {
-  transform: translate(-50%, -60%) scale(1.15);
   border: 3px solid #1434d2;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .timeline-wrapper:hover .timeline-dot img {
-  transform: scale(1.1); /* Make inner image pop slightly more */
+  transform: scale(1.4); /* Make inner image pop slightly more */
 }
 
 .timeline-wrapper:hover .timeline-content {
@@ -1055,13 +1068,136 @@
 }
 
 @media screen and (max-width: 768px) {
-  .timeline-item {
-    flex-direction: column;
+    .timeline-wrapper {
+    flex-direction: row !important; /* horizontal layout */
+    align-items: flex-start;
+    gap: 1rem;
   }
 
+
+  .timeline-content {
+    width: 90% !important;
+    text-align: center;
+  }
+
+  .mobile-menu-toggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.95);
+    padding: 1.5rem;
+    border-radius: 8px;
+    z-index: 999;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+}
+
+
+.timeline-dot {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    z-index: 2;
+  }
+}
+@media (max-width: 768px) {
+  .mobile-theme-center {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin-top: 1rem !important;
+  }
+
+  .theme-toggle {
+    margin: 0 !important;
+  }
+}
+.fade-out {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+
+@media (max-width: 768px) {
+  .timeline-container::before {
+    left: 30px;
+    top: 0px;
+    height: calc(100% - 0px);
+  }
+  @media (max-width: 768px) {
+  .timeline-container::after {
+    left: 20px;
+    transform: translateX(0) translateY(-50%);
+  }
+}
+
+  .timeline-item {
+    margin-left: 0;
+    padding-left: 70px; /* space for dot + line */
+    width: 100%;
+  }
+
+  .timeline-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  position: relative;
+}
+
+
   .timeline-dot {
-    width: 60px;
-    height: 60px;
+    position: absolute;
+    left: -86px;
+    top: 50%;
+    transform: translate(0%, -60%) scale(1.15);
+    width: 90px;
+    height: 90px;
+    z-index: 2;
+  }
+
+  .timeline-dot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+  }
+
+  .timeline-content {
+    width: 100%;
+    text-align: left;
+    margin-left: 4.5rem;
+    padding-left: 1rem;
+  }
+
+  .bottom-dot {
+    left: 22px;
+    transform: translateY(50%);
   }
 }
 
@@ -1073,16 +1209,20 @@
     <nav id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo"><span>Karthik Tulugu</span></a>
-            <div class="nav-links">
+            <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links" id="navLinks">
                 <a href="#about">About</a>
                 <a href="#skills">Skills</a>
                 <a href="#projects">Projects</a>
                 <a href="#contact">Contact</a>
-                <button class="theme-toggle" id="themeToggle">
+                <div class="mobile-theme-center">
+                  <button class="theme-toggle" id="themeToggle">
                     <i class="fas fa-moon"></i>
-                </button>
-                
-            </div>
+                  </button>
+                </div>
+              </div>                        
         </div>
     </nav>
 
@@ -1596,79 +1736,67 @@
     <script>
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-        let darkMode = false;
-    
-        // Set default theme
         const savedTheme = localStorage.getItem('theme');
-        if (!savedTheme || savedTheme === 'dark') {
-            body.setAttribute('data-theme', 'dark');
-            darkMode = true;
-            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            body.removeAttribute('data-theme');
-            darkMode = false;
-            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
+        const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+        const navLinks = document.getElementById('navLinks');
     
-        // Add rotation animation
-        function rotateIcon(icon) {
-            icon.style.transition = 'transform 0.4s ease';
-            icon.style.transform = 'rotate(360deg)';
-            setTimeout(() => {
-                icon.style.transform = 'rotate(0deg)';
-            }, 400);
+        // Theme setup
+        if (!savedTheme || savedTheme === 'dark') {
+          body.setAttribute('data-theme', 'dark');
+          themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          body.removeAttribute('data-theme');
+          themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         }
     
         themeToggle.addEventListener('click', () => {
-            const currentIcon = themeToggle.querySelector('i');
-            rotateIcon(currentIcon);
+          const icon = themeToggle.querySelector('i');
+          icon.style.transition = 'transform 0.4s ease';
+          icon.style.transform = 'rotate(360deg)';
+          setTimeout(() => icon.style.transform = 'rotate(0deg)', 400);
     
-            setTimeout(() => {
-                darkMode = !darkMode;
-                if (darkMode) {
-                    body.setAttribute('data-theme', 'dark');
-                    localStorage.setItem('theme', 'dark');
-                    themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-                } else {
-                    body.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'light');
-                    themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-                }
-            }, 200); // delay so rotate happens before icon changes
+          setTimeout(() => {
+            if (body.hasAttribute('data-theme')) {
+              body.removeAttribute('data-theme');
+              localStorage.setItem('theme', 'light');
+              themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+            } else {
+              body.setAttribute('data-theme', 'dark');
+              localStorage.setItem('theme', 'dark');
+              themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+          }, 200);
         });
     
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
+          const navbar = document.getElementById('navbar');
+          navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
     
-        const isLocalhost = window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost';
-       
-        document.addEventListener('DOMContentLoaded', () => {
-            const filterButtons = document.querySelectorAll('.filter-btn');
-            const projectCards = document.querySelectorAll('.project-card');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    // Remove 'active' class from all buttons
-                    filterButtons.forEach(btn => btn.classList.remove('active'));
-                    // Add 'active' class to the clicked button
-                    button.classList.add('active');
-
-                    const category = button.getAttribute('data-category');
-
-                    projectCards.forEach(card => {
-                        if (category === 'all' || card.getAttribute('data-category') === category) {
-                            card.classList.remove('hidden'); // Show matching cards
-                        } else {
-                            card.classList.add('hidden'); // Hide non-matching cards
-                        }
-                    });
-                });
-            });
+        // Toggle mobile menu
+        mobileMenuToggle.addEventListener('click', () => {
+          navLinks.classList.toggle('active');
+          navLinks.classList.remove('fade-out');
         });
-    </script>
+    
+        // Close mobile menu when clicking link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth <= 768) {
+              navLinks.classList.add('fade-out');
+              setTimeout(() => navLinks.classList.remove('active', 'fade-out'), 300);
+            }
+          });
+        });
+    
+        // Close menu if clicking outside
+        document.addEventListener('click', function (event) {
+          if (!navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+            navLinks.classList.remove('active');
+          }
+        });
+      </script>
     <script>
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
@@ -1738,33 +1866,33 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
 </script>
 <script>
     function customScrollTo(targetId, duration = 800) {
-      const target = document.querySelector(targetId);
-      if (!target) return;
-    
-      const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
-      const startPosition = window.pageYOffset;
-      const distance = targetPosition - startPosition;
-      let startTime = null;
-    
-      function animation(currentTime) {
-        if (startTime === null) startTime = currentTime;
-        const timeElapsed = currentTime - startTime;
-        const offset = 60; // adjust this value as needed (e.g., height of your navbar)
-const run = ease(timeElapsed, startPosition, distance - offset, duration);
-        window.scrollTo(0, run);
-        if (timeElapsed < duration) requestAnimationFrame(animation);
-      }
-    
-      function ease(t, b, c, d) {
-        // easeInOutQuad
-        t /= d / 2;
-        if (t < 1) return c / 2 * t * t + b;
-        t--;
-        return -c / 2 * (t * (t - 2) - 1) + b;
-      }
-    
-      requestAnimationFrame(animation);
-    }
+  const target = document.querySelector(targetId);
+  if (!target) return;
+
+  const offset = window.innerWidth < 768 ? 70 : 60; // different offset for mobile
+  const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
+  const startPosition = window.pageYOffset;
+  const distance = targetPosition - startPosition - offset;
+  let startTime = null;
+
+  function animation(currentTime) {
+    if (startTime === null) startTime = currentTime;
+    const timeElapsed = currentTime - startTime;
+    const run = ease(timeElapsed, startPosition, distance, duration);
+    window.scrollTo(0, run);
+    if (timeElapsed < duration) requestAnimationFrame(animation);
+  }
+
+  function ease(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return c / 2 * t * t + b;
+    t--;
+    return -c / 2 * (t * (t - 2) - 1) + b;
+  }
+
+  requestAnimationFrame(animation);
+}
+
     
     document.getElementById('scrollToProjects').addEventListener('click', function(e) {
       e.preventDefault();
