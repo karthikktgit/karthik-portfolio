@@ -443,13 +443,24 @@
 
 
         .project-filters {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          padding: 0 1rem;
+          scroll-snap-type: x mandatory;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 1.5rem; /* Increase spacing between buttons */
             margin-bottom: 2.5rem; /* Add more spacing below the buttons */
         }
-
+        .project-filters::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for cleaner UI */
+  }
+  .projects-grid::-webkit-scrollbar {
+    display: none;
+  }
         .filter-btn {
+          flex: 0 0 auto; /* Prevent shrinking */
+    scroll-snap-align: start;
             padding: 0.8rem 1.5rem; /* Increase button size */
             font-size: 1rem; /* Larger text */
             font-weight: 600;
@@ -474,7 +485,8 @@
 
         .project-card {
             display: flex;
-            flex-direction: column;
+            flex: 0 0 90%;
+            scroll-snap-align: center;
             justify-content: space-between;
             width: 400px;             /* Fixed width */
             height: 500px;   
