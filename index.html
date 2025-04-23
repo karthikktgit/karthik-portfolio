@@ -521,7 +521,7 @@
         }
 
         .project-card:not(.hidden) {
-            animation: fadeInUp 0.3s ease; /* Apply fade-in animation */
+            animation: fadeInUp 0.5s ease; /* Apply fade-in animation */
         }
 
         .project-card:hover {
@@ -583,7 +583,7 @@
             width: 100%;
   height: auto;
   max-height: 1200px; /* Prevent infinite height */
-  transition: max-height 0s ease, padding 0s ease;
+  transition: max-height 0.9s ease, padding 0.9s ease;
   flex-direction: row;
   flex-wrap: nowrap;
   gap: 2rem;
@@ -1836,7 +1836,7 @@
     
         themeToggle.addEventListener('click', () => {
           const icon = themeToggle.querySelector('i');
-          icon.style.transition = 'transform 0.4s ease';
+          icon.style.transition = 'transform 1s ease';
           icon.style.transform = 'rotate(360deg)';
           setTimeout(() => icon.style.transform = 'rotate(0deg)', 400);
     
@@ -2014,6 +2014,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
      
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const selectedCategory = button.getAttribute('data-category');
+
+        projectCards.forEach(card => {
+          const categories = card.getAttribute('data-category').split(' ');
+          if (selectedCategory === 'all' || categories.includes(selectedCategory)) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+  });
+</script>
+
 <script>
     document.getElementById('scrollDownArrow')?.addEventListener('click', function (e) {
       e.preventDefault();
