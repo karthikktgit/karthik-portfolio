@@ -1257,6 +1257,70 @@
   }
 }
 
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.skill-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.skill-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+}
+
+.skill-item span {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.skill-item:hover {
+  transform: scale(1.1);
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.skill-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.skill-item img {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.1));
+}
+
+.skill-item span {
+  display: block;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.skill-item:hover {
+  transform: scale(1.1);
+}
+
 
     </style>
     
@@ -1350,134 +1414,126 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>My Skills</h2>
-            </div>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3><i class="fas fa-database"></i> Data Analysis</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>SQL</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Python (Pandas, NumPy)</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>R</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Excel/Google Sheets</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                </div>
+<section id="skills" class="skills-section">
+  <div class="container">
+    <div class="section-title">
+      <h2>My Skills</h2>
+    </div>
+    <div class="skills-grid">
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-chart-line"></i> Data Visualization</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Tableau</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Power BI</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Matplotlib/Seaborn</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>D3.js</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 70%"></div>
-                        </div>
-                    </div>
-                </div>
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python" />
+        <span>Python</span>
+      </div>
 
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> Business Intelligence</h3>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>KPI Development</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Dashboard Design</span>
-                            <span>95%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Data Storytelling</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 90%"></div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <div class="skill-name">
-                            <span>Requirements Gathering</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar">
-                            <div class="skill-progress" style="width: 85%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/r/r-original.svg" alt="R" />
+        <span>R</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL" />
+        <span>MySQL</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server" />
+        <span>SQL Server</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oracle/oracle-original.svg" alt="Oracle" />
+        <span>Oracle</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="MongoDB" />
+        <span>MongoDB</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/Amazon_Web_Services_Logo.svg" alt="AWS" style="padding:8px; background:white; border-radius:8px;" />
+        <span>AWS</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg" alt="GCP" />
+        <span>GCP</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase" />
+        <span>Firebase</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript" />
+        <span>JavaScript</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5" />
+        <span>HTML5</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" />
+        <span>CSS3</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://img.icons8.com/color/96/000000/tableau-software.png" alt="Tableau" />
+        <span>Tableau</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://img.icons8.com/color/96/000000/power-bi.png" alt="Power BI" />
+        <span>Power BI</span>
+      </div>  
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" alt="Linux" />
+        <span>Linux</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" />
+        <span>Git</span>
+      </div>
+
+      <!-- NEW ADDED Skills Below -->
+
+      <div class="skill-item">
+        <img src="https://www.vectorlogo.zone/logos/snowflake/snowflake-icon.svg" alt="Snowflake" />
+        <span>Snowflake</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/XGBoost_logo.png" alt="XGBoost" style="background:white; padding:8px; border-radius:8px;" />
+        <span>XGBoost</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.worldvectorlogo.com/logos/apache-spark-5.svg" alt="PySpark" style="background:white; padding:8px; border-radius:8px;" />
+        <span>PySpark</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg" alt="Pandas" />
+        <span>Pandas</span>
+      </div>
+
+      <div class="skill-item">
+        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg" alt="PyTorch" />
+        <span>PyTorch</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    
+    
 
     <!-- Projects Section -->
     <section id="projects" class="projects-section">
