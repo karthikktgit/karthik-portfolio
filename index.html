@@ -1260,15 +1260,8 @@
   }
 }
 
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  align-items: center;
-  padding-top: 2rem;
-  justify-content: center; /* 👈 This centers the last row */
-}
+
+
 
 
 
@@ -1296,11 +1289,10 @@
 }
 
 .skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 2rem;
-  justify-items: center;
-  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;   /* 💡 This centers every row */
+  gap: 3rem;
   padding-top: 2rem;
 }
 
