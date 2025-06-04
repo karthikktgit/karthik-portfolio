@@ -2092,6 +2092,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   </script>
  
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDjqtyI5p6-6buCh6awyaqVFL7MTkAYDbs",
+    authDomain: "portfolio-463c8.firebaseapp.com",
+    projectId: "portfolio-463c8",
+    storageBucket: "portfolio-463c8.firebasestorage.app",
+    messagingSenderId: "799101697625",
+    appId: "1:799101697625:web:537cac0c7e25a47bf5fb48",
+    measurementId: "G-0NXXHWFED0"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // Geolocation + Firestore Logging
+  fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(async (data) => {
+      try {
+        await addDoc(collection(db, "visits"), {
+          ip: data.ip,
+          city: data.city,
+          country: data.country_name,
+          region: data.region,
+          org: data.org,
+          url: window.location.href,
+          referrer: document.referrer,
+          userAgent: navigator.userAgent,
+          timestamp: new Date().toISOString()
+        });
+        console.log("Visitor logged to Firestore ✅");
+      } catch (e) {
+        console.error("❌ Error logging visit:", e);
+      }
+    });
+</script>
+
 
 </body>
 </html>
