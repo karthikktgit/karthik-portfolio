@@ -2094,17 +2094,17 @@ document.addEventListener("DOMContentLoaded", function () {
  
 <!-- Firebase SDK -->
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDjqtyI5p6-6buCh6awyaqVFL7MTkAYDbs",
-    authDomain: "portfolio-463c8.firebaseapp.com",
-    projectId: "portfolio-463c8",
-    storageBucket: "portfolio-463c8.firebasestorage.app",
-    messagingSenderId: "799101697625",
-    appId: "1:799101697625:web:537cac0c7e25a47bf5fb48",
-    measurementId: "G-0NXXHWFED0"
+const firebaseConfig = {
+  apiKey: "AIzaSyCYdbPd60vI86OBnEfDChWQve0AunvcvvQ",
+  authDomain: "portfolio-visitor-tracker.firebaseapp.com",
+  projectId: "portfolio-visitor-tracker",
+  storageBucket: "portfolio-visitor-tracker.firebasestorage.app",
+  messagingSenderId: "618497925902",
+  appId: "1:618497925902:web:7a60b744be7dfcbdb6ed5f",
+  measurementId: "G-44Z63T147Z"
   };
 
   const app = initializeApp(firebaseConfig);
