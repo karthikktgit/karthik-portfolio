@@ -2094,8 +2094,9 @@ document.addEventListener("DOMContentLoaded", function () {
  
 <!-- Firebase SDK -->
 <script type="module">
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+  import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCYdbPd60vI86OBnEfDChWQve0AunvcvvQ",
